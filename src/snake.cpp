@@ -5,6 +5,7 @@
 #include "figure/rect.hpp"
 #include <cstdint>
 #include <cstdio>
+#include <etl/circular_buffer.h>
 
 namespace{
   Direction update_dir_right(const Direction &dir){
@@ -18,6 +19,10 @@ namespace{
   bool out_of_bounds(Point pos) {
     return ((pos.first < 0) || (pos.second < 0) || (pos.first >= disp_width) || (pos.second >= disp_height));
   }
+}
+
+const etl::circular_buffer<Point, 128>& Snake::get_segment(){
+  return segments_;
 }
 
 Snake::Snake(DISPLAY &display) : diretion_(Direction::Right), display_(display) {

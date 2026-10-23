@@ -37,6 +37,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     hardware_i2c
     ssd1306::ssd1306
     etl::etl
+    pico_rand
 )
 
 pico_enable_stdio_usb(${PROJECT_NAME} 1)
