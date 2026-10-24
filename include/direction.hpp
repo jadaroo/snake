@@ -7,3 +7,5 @@ enum class Direction : uint8_t {
   Down = 2,
   Left = 3
 };
+
+constexpr uint8_t direction_count = 4;

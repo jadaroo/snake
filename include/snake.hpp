@@ -6,20 +6,27 @@
 #pragma once
 
 constexpr uint8_t segment_size = 8;
+constexpr uint8_t grid_cols = disp_width / segment_size;
+constexpr uint8_t grid_rows = disp_height / segment_size;
+constexpr uint16_t grid_cells = grid_cols * grid_rows;
+constexpr uint8_t initial_snake_length = 3;
 
 class Snake
 {
 public:
   Snake(DISPLAY &display);
-  bool turn(Direction turn_dir);
+  void turn(Direction turn_dir);
   bool go();
   void update();
-  const etl::circular_buffer<Point, 128>& get_segment();
+  void grow();
+  void snake_erase();
+  void snake_restart();
+  const etl::circular_buffer<Point, grid_cells>& get_segment();
   Point get_head(){
     return segments_.back();
   }
 private:
-  etl::circular_buffer<Point, 128> segments_;
+  etl::circular_buffer<Point, grid_cells> segments_;
   Direction diretion_;
   DISPLAY &display_;
 };
