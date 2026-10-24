@@ -5,7 +5,6 @@
 #include "i2c_bus/i2c_transport.hpp"
 #include "snake.hpp"
 #include <cstdint>
-#include <cstdio>
 #include <hardware/gpio.h>
 #include <hardware/i2c.h>
 #include <pico/platform/common.h>
