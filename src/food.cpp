@@ -1,9 +1,7 @@
 #include "food.hpp"
-#include "display/display.hpp"
 #include "figure/circle.hpp"
 #include "snake.hpp"
 #include <cstdint>
-#include <cstdio>
 #include <pico/rand.h>
 #include <pico/time.h>
 #include <pico/types.h>
@@ -13,7 +11,7 @@ constexpr uint8_t food_center_offset = segment_size / 2;
 
 void Food::clear_food() {
   SSD1306::Circle food({x_ + food_center_offset, y_ + food_center_offset}, food_radius);
-  food.delete_figure(display_);
+  food.clear_figure(display_);
 }
 
 void Food::add_food() {

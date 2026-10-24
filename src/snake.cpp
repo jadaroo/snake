@@ -33,7 +33,7 @@ Snake::Snake(DISPLAY &display) : diretion_(Direction::Right), display_(display) 
 void Snake::turn(Direction turn_dir) {
   auto head = segments_.back();
   SSD1306::Rect tail = {segments_.front(), segment_size, segment_size};
-  tail.delete_figure(display_);
+  tail.clear_figure(display_);
   segments_.pop();
   Point new_head;
   switch(diretion_) {
@@ -77,7 +77,7 @@ void Snake::turn(Direction turn_dir) {
 }
 
 void Snake::snake_restart(){
-  snake_erase();
+  snake_clear();
   segments_.clear();
   for(uint8_t i = 0; i < initial_snake_length; i++) {
     segments_.push({i * segment_size, 0});
@@ -88,7 +88,7 @@ void Snake::snake_restart(){
 bool Snake::go() {
   auto head = segments_.back();
   SSD1306::Rect tail = {segments_.front(), segment_size, segment_size};
-  tail.delete_figure(display_);
+  tail.clear_figure(display_);
   segments_.pop();
   Point new_head;
   
@@ -152,9 +152,9 @@ void Snake::update() {
   }
 }
 
-void Snake::snake_erase(){
+void Snake::snake_clear(){
   for(auto &s : segments_) {
     SSD1306::Rect segment(s, segment_size, segment_size);
-    segment.delete_figure(display_);
+    segment.clear_figure(display_);
   }
 }

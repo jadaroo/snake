@@ -65,12 +65,12 @@ void init_game(DISPLAY &display){
   display.clear_display();
   SSD1306::String title(title_pos, title_text, text_len(title_text));
   display.add_string(title);
-  display.print_data();
+  display.update_display();
 
   sleep_ms(title_screen_ms);
 
   display.delete_string(title);
-  display.print_data();
+  display.update_display();
   is_init = false;
 }
 
@@ -126,7 +126,7 @@ int main() {
     }
 
     snake.update();
-    display.print_data();
+    display.update_display();
     sleep_ms(tick_ms);
   }
 }

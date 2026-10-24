@@ -56,12 +56,12 @@ inline void win(Snake &snake, Food &food, DISPLAY &display, uint8_t score){
   display.add_string(score_output);
   display.add_string(game_over);
   display.add_string(start_again);
-  display.print_data();
+  display.update_display();
 }
 
 inline void game_over(Snake &snake, Food &food, DISPLAY &display, uint8_t score) {
   snake.update();
-  display.print_data();
+  display.update_display();
   sleep_ms(game_over_delay_ms);
   snake.snake_restart();
   food.clear_food();
@@ -74,6 +74,6 @@ inline void game_over(Snake &snake, Food &food, DISPLAY &display, uint8_t score)
   display.add_string(score_output);
   display.add_string(game_over);
   display.add_string(start_again);
-  display.print_data();
+  display.update_display();
 }
 

@@ -19,7 +19,7 @@ public:
   bool go();
   void update();
   void grow();
-  void snake_erase();
+  void snake_clear();
   void snake_restart();
   const etl::circular_buffer<Point, grid_cells>& get_segment();
   Point get_head(){
